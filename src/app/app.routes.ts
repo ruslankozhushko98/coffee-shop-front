@@ -9,8 +9,4 @@ export const routes: Routes = [
     path: 'sign-up',
     loadComponent: () => import('./features/auth/sign-up/sign-up.component').then(m => m.SignUpComponent),
   },
-  {
-    path: '',
-    loadComponent: () => import('./features/beverages/beverages.component').then(m => m.BeveragesComponent),
-  },
 ];

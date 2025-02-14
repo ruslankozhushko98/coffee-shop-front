@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { Beverage } from 'app/shared/models';
+import { Beverage } from 'app/core/models';
 import {
   fetchAllBeverages,
   fetchAllBeveragesSuccess,
@@ -8,7 +8,7 @@ import {
   fetchBeverageById,
   fetchBeverageByIdSuccess,
   fetchBeverageByIdError,
-} from 'app/store/actions/menu.actions';
+} from 'app/store/menu/menu.actions';
 
 export interface MenuInitialState {
   isFetchingAllBeverages: boolean;

@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Beverage } from 'app/shared/models';
+import { Beverage } from 'app/core/models';
 
 @Injectable({
   providedIn: 'root',

@@ -9,10 +9,8 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
 import { httpInterceptor } from './core/interceptor/http.interceptor';
-import * as menuEffects from './store/effects/menu.effects';
-import * as todosEffects from './store/effects/todos.effects';
-import { menuReducer } from './store/reducers/menu.reducer';
-import { todosReducer } from './store/reducers/todos.reducer';
+import * as menuEffects from './store/menu/menu.effects';
+import { menuReducer } from './store/menu/menu.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,11 +19,10 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideStore({
       menu: menuReducer,
-      todos: todosReducer,
     }),
     provideHttpClient(withInterceptors([httpInterceptor])),
     provideRouterStore(),
-    provideEffects(menuEffects, todosEffects),
+    provideEffects(menuEffects),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
   ],
 };

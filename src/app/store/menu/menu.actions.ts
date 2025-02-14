@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Beverage } from 'app/shared/models';
+import { Beverage } from 'app/core/models';
 
 export enum MenuActionTypes {
   FETCH_ALL_BEVERAGES = '[MENU] Fetch All Beverages',
@@ -22,7 +22,7 @@ export const fetchAllBeveragesSuccess = createAction(
 );
 
 export const fetchAllBeveragesError = createAction(
-  MenuActionTypes.FETCH_ALL_BEVERAGES_SUCCESS,
+  MenuActionTypes.FETCH_ALL_BEVERAGES_ERROR,
   props<{ error: string }>(),
 );
 
@@ -35,6 +35,7 @@ export const fetchBeverageByIdSuccess = createAction(
   MenuActionTypes.FETCH_BEVERAGE_BY_ID_SUCCESS,
   props<{ beverage: Beverage }>(),
 );
+
 export const fetchBeverageByIdError = createAction(
   MenuActionTypes.FETCH_BEVERAGE_BY_ID_ERROR,
   props<{ error: string }>(),

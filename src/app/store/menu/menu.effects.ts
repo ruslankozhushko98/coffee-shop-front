@@ -10,7 +10,7 @@ import {
   fetchBeverageById,
   fetchBeverageByIdSuccess,
   fetchBeverageByIdError,
-} from 'app/store/actions/menu.actions';
+} from 'app/store/menu/menu.actions';
 
 export const loadAllBeverages = createEffect(
   (actions$ = inject(Actions), menuService = inject(MenuService)) => {

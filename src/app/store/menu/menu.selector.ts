@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { MenuInitialState } from 'app/store/reducers/menu.reducer';
+import { MenuInitialState } from 'app/store/menu/menu.reducer';
 
 export const menuState = createFeatureSelector<MenuInitialState>('menu');
 
