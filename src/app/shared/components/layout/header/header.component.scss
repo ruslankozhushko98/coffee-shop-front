@@ -1,0 +1,17 @@
+@use '@angular/material' as mat;
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+.active {
+  color: blue;
+}
+
+a:last-child {
+  margin-left: 10px;
+}
