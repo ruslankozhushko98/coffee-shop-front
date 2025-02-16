@@ -2,9 +2,9 @@ import { Gender } from 'app/shared/utils/enums';
 
 export interface User {
   id: number;
-  name: string;
   email: string;
-  password: string;
+  firstName: string;
+  lastName: string;
   dob: string;
   gender: Gender;
 }

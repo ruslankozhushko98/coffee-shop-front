@@ -40,15 +40,12 @@ export const menuReducer = createReducer(
     beverages: [],
   })),
 
-  on(fetchAllBeveragesSuccess, (state, { beverages }) => {
-    console.log('REDUCER STATE: ', state);
-    return {
-      ...state,
-      isFetchingAllBeverages: false,
-      fetchingAllBeveragesErrorMessage: '',
-      beverages,
-    };
-  }),
+  on(fetchAllBeveragesSuccess, (state, { beverages }) => ({
+    ...state,
+    isFetchingAllBeverages: false,
+    fetchingAllBeveragesErrorMessage: '',
+    beverages,
+  })),
 
   on(fetchAllBeveragesError, (state, action) => ({
     ...state,

@@ -21,8 +21,7 @@ export const loadAllBeverages = createEffect(
         catchError(error => of(fetchAllBeveragesError({ error }))),
       )),
     );
-  },
-  { functional: true },
+  }, { functional: true },
 );
 
 export const loadBeverageById = createEffect(

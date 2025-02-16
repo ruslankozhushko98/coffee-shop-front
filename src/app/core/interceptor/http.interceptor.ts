@@ -26,7 +26,7 @@ export const httpInterceptor: HttpInterceptorFn = (req, next) => {
           console.log('Http Error: ', err.message);
 
           if (err.status === 401) {
-            location.pathname = '/';
+            location.replace('/');
           }
         }
       },

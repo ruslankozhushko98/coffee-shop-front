@@ -1,3 +1,53 @@
 <div>
-  <sign-in-form />
+  <h3>Sign In</h3>
+
+  <form name="sign-in-form" class="sign-in-form" [formGroup]="signInForm" (submit)="handleSignIn($event)">
+    <mat-form-field class="email-field">
+      <mat-label>Email:</mat-label>
+
+      <input
+        matInput
+        type="email"
+        name="email"
+        [formControl]="signInForm.controls.email"
+      />
+
+      @if (signInForm.controls.email.hasError('email') && !signInForm.controls.email.hasError('required')) {
+        <mat-error>Email is invalid!</mat-error>
+      }
+
+      @if (signInForm.controls.email.hasError('required')) {
+        <mat-error>Email is required!</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password:</mat-label>
+
+      <input
+        matInput
+        type="password"
+        name="password"
+        [formControl]="signInForm.controls.password"
+      />
+
+      @if (signInForm.controls.password.hasError('required')) {
+        <mat-error>Password is required!</mat-error>
+      }
+    </mat-form-field>
+
+    <button
+      mat-flat-button
+      type="submit"
+      name="sign-in-btn"
+      class="sign-in-btn"
+      [disabled]="isSigningIn() || signInForm.invalid"
+    >
+      Sign In
+    </button>
+  </form>
+
+  @if (errorMessage$ | async; as errorMessage) {
+    <mat-error class="sign-in-error">{{ errorMessage }}</mat-error>
+  }
 </div>

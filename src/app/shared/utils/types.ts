@@ -1,10 +1,15 @@
 import { User } from 'app/core/models';
 
-export type SignInDto = Pick<User, 'email' | 'password'>;
+export type SignInDto = {
+  email: string;
+  password: string;
+};
+
 export type SignUpDto = Omit<User, 'id'>;
 
-export type TokenResponse = {
+export type AuthResponse = {
   accessToken: string;
+  user: User;
 };
 
 export type UserResponse = {
