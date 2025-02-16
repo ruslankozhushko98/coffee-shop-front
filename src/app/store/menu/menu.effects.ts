@@ -18,7 +18,7 @@ export const loadAllBeverages = createEffect(
       ofType(fetchAllBeverages),
       switchMap(() => menuService.fetchAllBeverages().pipe(
         map(beverages => fetchAllBeveragesSuccess({ beverages })),
-        catchError(error => of(fetchAllBeveragesError({ error }))),
+        catchError(({ error }) => of(fetchAllBeveragesError({ error: error.message }))),
       )),
     );
   }, { functional: true },
@@ -30,7 +30,7 @@ export const loadBeverageById = createEffect(
       ofType(fetchBeverageById),
       switchMap(({ beverageId }) => menuService.fetchBeverageById(beverageId).pipe(
         map(beverage => fetchBeverageByIdSuccess({ beverage })),
-        catchError(error => of(fetchBeverageByIdError({ error }))),
+        catchError(({ error }) => of(fetchBeverageByIdError({ error: error.message }))),
       )),
     );
   }, { functional: true },
