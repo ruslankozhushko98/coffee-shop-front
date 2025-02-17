@@ -10,8 +10,6 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
 import { httpInterceptor } from './core/interceptor/http.interceptor';
-import * as authEffects from './store/auth/auth.effects';
-import { authReducer } from './store/auth/auth.reducer';
 import * as menuEffects from './store/menu/menu.effects';
 import { menuReducer } from './store/menu/menu.reducer';
 
@@ -22,12 +20,11 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideStore({
       router: routerReducer,
-      auth: authReducer,
       menu: menuReducer,
     }),
     provideHttpClient(withInterceptors([httpInterceptor])),
     provideRouterStore(),
-    provideEffects(authEffects, menuEffects),
+    provideEffects(menuEffects),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideNativeDateAdapter(),
   ],

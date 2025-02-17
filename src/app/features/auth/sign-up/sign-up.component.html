@@ -110,7 +110,7 @@
     </button>
   </form>
 
-  @if (errorMessage$ | async; as errMsg) {
-    <mat-error class="sign-up-error">{{ errMsg }}</mat-error>
+  @if (isError()) {
+    <mat-error class="sign-up-error">{{ errorMessage() }}</mat-error>
   }
 </div>

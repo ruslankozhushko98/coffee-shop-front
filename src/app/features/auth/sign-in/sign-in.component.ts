@@ -1,13 +1,11 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { Store } from '@ngrx/store';
 
-import { signIn } from 'app/store/auth/auth.actions';
-import { selectSignInError } from 'app/store/auth/auth.selector';
+import { AuthStore } from 'app/store/auth.store';
 
 @Component({
   selector: 'app-sign-in',
@@ -22,11 +20,11 @@ import { selectSignInError } from 'app/store/auth/auth.selector';
   styleUrl: './sign-in.component.scss',
 })
 export class SignInComponent {
-  store = inject(Store);
+  authStore = inject(AuthStore);
 
-  isSigningIn = signal(false);
-
-  errorMessage$ = this.store.select(selectSignInError);
+  isSigningIn = this.authStore.isSigningIn;
+  isError = this.authStore.isSignInError;
+  errorMessage = this.authStore.signInErrorMessage;
 
   signInForm = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required]),
@@ -37,14 +35,10 @@ export class SignInComponent {
     e.preventDefault();
 
     if (!this.signInForm.invalid) {
-      this.isSigningIn.update(() => true);
-
-      this.store.dispatch(signIn({
+      this.authStore.signIn({
         email: String(this.signInForm.value.email),
         password: String(this.signInForm.value.password),
-      }));
-
-      this.isSigningIn.update(() => false);
+      });
     }
   }
 }

@@ -25,7 +25,8 @@ export const httpInterceptor: HttpInterceptorFn = (req, next) => {
         if (err instanceof HttpErrorResponse) {
           console.log('Http Error: ', err.message);
 
-          if (err.status === 401) {
+          if (err.status === 401 && location.pathname !== '/') {
+            localStorage.removeItem('access_token');
             location.replace('/');
           }
         }

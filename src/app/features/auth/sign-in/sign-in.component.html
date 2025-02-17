@@ -41,13 +41,13 @@
       type="submit"
       name="sign-in-btn"
       class="sign-in-btn"
-      [disabled]="isSigningIn() || signInForm.invalid"
+      [disabled]="isError() || signInForm.invalid"
     >
       Sign In
     </button>
   </form>
 
-  @if (errorMessage$ | async; as errorMessage) {
-    <mat-error class="sign-in-error">{{ errorMessage }}</mat-error>
+  @if (isError()) {
+    <mat-error class="sign-in-error">{{ errorMessage() }}</mat-error>
   }
 </div>
