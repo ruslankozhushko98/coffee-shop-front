@@ -46,7 +46,7 @@ export class SignUpComponent {
     e.preventDefault();
 
     if (!this.signUpForm.invalid) {
-      this.isSigningUp.set(true);
+      this.isSigningUp.update(() => true);
 
       this.store.dispatch(signUp({
         email: String(this.signUpForm.value.email),
@@ -57,7 +57,7 @@ export class SignUpComponent {
         gender: this.signUpForm.value.gender as Gender,
       }));
 
-      this.isSigningUp.set(false);
+      this.isSigningUp.update(() => false);
     }
   }
 }

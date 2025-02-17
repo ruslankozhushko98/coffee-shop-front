@@ -9,4 +9,8 @@ export const routes: Routes = [
     path: 'sign-up',
     loadComponent: () => import('./features/auth/sign-up/sign-up.component').then(m => m.SignUpComponent),
   },
+  {
+    path: '',
+    loadComponent: () => import('./features/home/home.component').then(m => m.HomeComponent),
+  },
 ];

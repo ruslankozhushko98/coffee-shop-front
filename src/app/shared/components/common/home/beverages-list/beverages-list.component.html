@@ -1,0 +1,17 @@
+<mat-list>
+  @for (beverage of beverages; track beverage.id) {
+    <mat-list-item>
+      <span matListItemTitle>
+        {{ beverage.title }} - {{ beverage.price | currency }}
+      </span>
+
+      <span matListItemLine>
+        {{ beverage.description }}
+      </span>
+    </mat-list-item>
+  } @empty {
+    <mat-list-item>
+      No beverages found!
+    </mat-list-item>
+  }
+</mat-list>

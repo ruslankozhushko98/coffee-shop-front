@@ -5,7 +5,9 @@ export type SignInDto = {
   password: string;
 };
 
-export type SignUpDto = Omit<User, 'id'>;
+export type SignUpDto = Omit<User, 'id'> & {
+  password: string;
+};
 
 export type AuthResponse = {
   accessToken: string;

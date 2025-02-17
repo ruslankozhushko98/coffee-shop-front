@@ -2,6 +2,7 @@ import { ApplicationConfig, provideZoneChangeDetection, isDevMode } from '@angul
 import { provideRouter } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideNativeDateAdapter } from '@angular/material/core';
 import { provideStore } from '@ngrx/store';
 import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 import { provideEffects } from '@ngrx/effects';
@@ -13,7 +14,6 @@ import * as authEffects from './store/auth/auth.effects';
 import { authReducer } from './store/auth/auth.reducer';
 import * as menuEffects from './store/menu/menu.effects';
 import { menuReducer } from './store/menu/menu.reducer';
-import { provideNativeDateAdapter } from '@angular/material/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [

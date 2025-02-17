@@ -1,0 +1,10 @@
+<div>
+  <h3>Beverages</h3>
+
+  <mat-button-toggle-group [value]="activeFilter" (valueChange)="handleChange($event)" hideSingleSelectionIndicator>
+    <mat-button-toggle value="all">All</mat-button-toggle>
+    <mat-button-toggle value="favorites">Favorites</mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <app-beverages-list [beverages]="allBeverages()" />
+</div>

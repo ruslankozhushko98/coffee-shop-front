@@ -43,12 +43,16 @@ export const authReducer = createReducer(
     user: null,
   })),
 
-  on(signInSuccess, (state, { user }) => ({
-    ...state,
-    isSigningIn: false,
-    signInErrorMessage: '',
-    user,
-  })),
+  on(signInSuccess, (state, { accessToken, user }) => {
+    localStorage.setItem('access_token', accessToken);
+
+    return {
+      ...state,
+      isSigningIn: false,
+      signInErrorMessage: '',
+      user,
+    };
+  }),
 
   on(signInError, (state, { error }) => ({
     ...state,
@@ -64,12 +68,16 @@ export const authReducer = createReducer(
     user: null,
   })),
 
-  on(signUpSuccess, (state, { user }) => ({
-    ...state,
-    isSigningUp: false,
-    signUpErrorMessage: '',
-    user,
-  })),
+  on(signUpSuccess, (state, { accessToken, user }) => {
+    localStorage.setItem('access_token', accessToken);
+
+    return {
+      ...state,
+      isSigningUp: false,
+      signUpErrorMessage: '',
+      user,
+    };
+  }),
 
   on(signUpError, (state, { error }) => ({
     ...state,

@@ -37,14 +37,14 @@ export class SignInComponent {
     e.preventDefault();
 
     if (!this.signInForm.invalid) {
-      this.isSigningIn.set(true);
+      this.isSigningIn.update(() => true);
 
       this.store.dispatch(signIn({
         email: String(this.signInForm.value.email),
         password: String(this.signInForm.value.password),
       }));
 
-      this.isSigningIn.set(false);
+      this.isSigningIn.update(() => false);
     }
   }
 }
