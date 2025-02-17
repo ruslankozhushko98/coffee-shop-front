@@ -5,13 +5,10 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { provideStore } from '@ngrx/store';
 import { provideRouterStore, routerReducer } from '@ngrx/router-store';
-import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
 import { httpInterceptor } from './core/interceptor/http.interceptor';
-import * as menuEffects from './store/menu/menu.effects';
-import { menuReducer } from './store/menu/menu.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,11 +17,9 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideStore({
       router: routerReducer,
-      menu: menuReducer,
     }),
     provideHttpClient(withInterceptors([httpInterceptor])),
     provideRouterStore(),
-    provideEffects(menuEffects),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideNativeDateAdapter(),
   ],

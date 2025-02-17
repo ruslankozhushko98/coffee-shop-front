@@ -1,11 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, signal, OnInit } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { select, Store } from '@ngrx/store';
 
-import { fetchAllBeverages } from 'app/store/menu/menu.actions';
-import { selectAllBeverages } from 'app/store/menu/menu.selector';
+import { MenuStore } from 'app/store/menu.store';
 import { BeveragesListComponent } from 'app/shared/components/common/home/beverages-list/beverages-list.component';
 
 enum BeverageFilters {
@@ -16,23 +13,22 @@ enum BeverageFilters {
 @Component({
   selector: 'app-home',
   imports: [CommonModule, MatButtonToggleModule, BeveragesListComponent],
+  providers: [MenuStore],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
-  store = inject(Store);
+  menuStore = inject(MenuStore);
 
   activeFilter = signal<BeverageFilters>(BeverageFilters.ALL);
 
-  allBeverages = toSignal(this.store.pipe(select(selectAllBeverages)), {
-    initialValue: [],
-  });
+  allBeverages = this.menuStore.beverages;
 
   public handleChange(filter: BeverageFilters): void {
     this.activeFilter.set(filter);
   }
 
   public ngOnInit(): void {
-    this.store.dispatch(fetchAllBeverages());
+    this.menuStore.fetchAllBeverages();
   }
 }
