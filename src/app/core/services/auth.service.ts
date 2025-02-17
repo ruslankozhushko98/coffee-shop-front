@@ -1,11 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { User } from 'app/core/models';
 import {
   AuthResponse,
   SignInDto,
   SignUpDto,
-  UserResponse,
 } from 'app/shared/utils/types';
 
 @Injectable({
@@ -23,6 +23,6 @@ export class AuthService {
   }
 
   public fetchMe() {
-    return this.http.get<UserResponse>('http://localhost:5001/auth/me');
+    return this.http.get<User>('http://localhost:5001/auth/me');
   }
 }

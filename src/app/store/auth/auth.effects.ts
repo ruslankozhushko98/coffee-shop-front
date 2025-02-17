@@ -64,7 +64,7 @@ export const fetchMeEffect = createEffect(
     return actions$.pipe(
       ofType(fetchMe),
       switchMap(() => authService.fetchMe().pipe(
-        map(({ user }) => fetchMeSuccess({ user })),
+        map((user) => fetchMeSuccess({ user })),
         catchError(({ error }) => of(fetchMeError({ error: error.message }))),
       )),
     );

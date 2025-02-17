@@ -3,11 +3,23 @@
 
   <span class="spacer"></span>
 
-  <a routerLink="sign-in" routerLinkActive="active">
-    Sign In
-  </a>
+  @if (user()) {
+    <button mat-button [matMenuTriggerFor]="userDropdown">
+      Hey, {{ user()?.firstName }}
+    </button>
 
-  <a routerLink="sign-up" routerLinkActive="active">
-    Sign Up
-  </a>
+    <mat-menu #userDropdown>
+      <button mat-menu-item (click)="handleSignOut()">
+        Sign out
+      </button>
+    </mat-menu>
+  } @else if (!accessToken) {
+    <a routerLink="sign-in" routerLinkActive="active">
+      Sign In
+    </a>
+
+    <a routerLink="sign-up" routerLinkActive="active">
+      Sign Up
+    </a>
+  }
 </mat-toolbar>
