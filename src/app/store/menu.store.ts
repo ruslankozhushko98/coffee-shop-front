@@ -31,14 +31,10 @@ export const MenuStore = signalStore(
   withState(initialState),
 
   withComputed(({
-    isFetchingAllBeverages,
     fetchingAllBeveragesErrorMessage,
-    isFetchingBeverage,
     fetchingBeverageErrorMessage,
   }) => ({
-    isFetchingAllBeverages: computed(isFetchingAllBeverages),
     fetchAllBeveragesError: computed(() => fetchingAllBeveragesErrorMessage().length !== 0),
-    isFetchingBeverage: computed(isFetchingBeverage),
     fetchBeverageError: computed(fetchingBeverageErrorMessage),
   })),
 

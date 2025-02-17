@@ -39,9 +39,7 @@ const initialState: AuthInitialState = {
 export const AuthStore = signalStore(
   withState(initialState),
 
-  withComputed(({ isSigningIn, isSigningUp, signInErrorMessage, signUpErrorMessage }) => ({
-    isSigningIn: computed(isSigningIn),
-    isSigningUp: computed(isSigningUp),
+  withComputed(({ signInErrorMessage, signUpErrorMessage }) => ({
     isSignInError: computed(() => signInErrorMessage().length !== 0),
     isSignUpError: computed(() => signUpErrorMessage().length !== 0),
   })),
