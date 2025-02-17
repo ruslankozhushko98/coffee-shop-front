@@ -24,11 +24,11 @@ export class HomeComponent implements OnInit {
 
   allBeverages = this.menuStore.beverages;
 
-  public handleChange(filter: BeverageFilters): void {
-    this.activeFilter.set(filter);
-  }
-
   public ngOnInit(): void {
     this.menuStore.fetchAllBeverages();
+  }
+
+  public handleChange(filter: BeverageFilters): void {
+    this.activeFilter.set(filter);
   }
 }
